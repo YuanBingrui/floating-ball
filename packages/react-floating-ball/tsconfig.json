@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es5",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "declaration": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "es", "cjs"]
+}

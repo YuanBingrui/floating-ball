@@ -1,0 +1,47 @@
+{
+  "name": "react-floating-ball",
+  "version": "1.0.0",
+  "description": "A react component for floating ball",
+  "author": "xiaobaijun <bingrui_yuan0721@163.com>",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "floating",
+    "ball",
+    "floating-ball",
+    "floating-ball-react",
+    "react-component",
+    "front-end"
+  ],
+  "main": "index.js",
+  "module": "es/index.js",
+  "types": "cjs/index.d.ts",
+  "files": [
+    "index.js",
+    "es",
+    "cjs"
+  ],
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.22",
+    "@types/react": "^17.0.41",
+    "postcss": "8.x",
+    "react": "^17.0.2",
+    "rollup": "^2.70.1",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "sass": "^1.49.9",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "@floating-ball/core": "^1.0.0"
+  }
+}

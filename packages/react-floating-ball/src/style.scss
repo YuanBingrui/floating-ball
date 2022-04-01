@@ -1,0 +1,86 @@
+.floating-ball-contain {
+  position: fixed;
+  width: 3.5rem;
+  height: 3.5rem;
+  z-index: 30000;
+}
+
+.floating-ball-box {
+  position: absolute;
+  width: 3.5rem;
+  height: 3.5rem;
+  $zoom-scale: scale(1.2, 1.2);
+  @mixin ball-position {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+  .floating-ball-out {
+    @include ball-position;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 128, 0.1);
+  }
+  .floating-ball-in {
+    @include ball-position;
+    width: 85%;
+    height: 85%;
+    background-color: rgba(0, 128, 128, 0.2);
+  }
+  .floating-ball-center {
+    @include ball-position;
+    width: 70%;
+    height: 70%;
+    background-color: rgba(0, 128, 128, 0.3);
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.floating-ball-popover {
+  position: absolute;
+  padding: 0.2rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  transition: transform 0.2s;
+  &-item {
+    color: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0.2rem 0.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 3.8rem;
+    @mixin popover-common {
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-icon {
+      @include popover-common;
+      height: 3.4rem;
+      font-size: 2.3rem;
+      border-radius: 50%;
+    }
+    &-word {
+      @include popover-common;
+      height: 1rem;
+      font-size: 1rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
