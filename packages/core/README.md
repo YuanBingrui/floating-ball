@@ -18,6 +18,7 @@ pnpm add -D @floating-ball/core
 ```
 // cjs
 const floatingBallCore = require('@floating-ball/core');
+
 // esm
 import floatingBallCore from '@floating-ball/core';
 
