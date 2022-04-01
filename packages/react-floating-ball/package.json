@@ -1,6 +1,6 @@
 {
   "name": "react-floating-ball",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A react component for floating ball",
   "author": "xiaobaijun <bingrui_yuan0721@163.com>",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
-    "@floating-ball/core": "^1.0.1"
+    "@floating-ball/core": "^1.0.2"
   },
   "publishConfig": {
     "access": "public",
