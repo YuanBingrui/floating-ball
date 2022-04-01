@@ -23,6 +23,7 @@ import floatingBallCore from '@floating-ball/core';
 
 // pass theme and position as initvalue
 const fbCore = new floatingBallCore('#595857', 'top right')
+
 // or nothing
 const fbCore = new floatingBallCore()
 ```
