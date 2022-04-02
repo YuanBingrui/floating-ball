@@ -3,13 +3,14 @@
   "version": "1.0.4",
   "description": "A react component for floating ball",
   "author": "xiaobaijun <bingrui_yuan0721@163.com>",
+  "homepage": "https://github.com/YuanBingrui/floating-ball#readme",
   "license": "MIT",
   "keywords": [
     "react",
     "floating",
     "ball",
     "floating-ball",
-    "floating-ball-react",
+    "react-floating-ball",
     "react-component",
     "front-end"
   ],
@@ -21,6 +22,13 @@
     "es",
     "cjs"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuanBingrui/floating-ball.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YuanBingrui/floating-ball/issues"
+  },
   "scripts": {
     "build": "rollup -c"
   },

@@ -17,9 +17,9 @@ pnpm add -D react-floating-ball
 
 ```
 // cjs
-const floatingBallCore = require('react-floating-ball');
+const FloatingBall = require('react-floating-ball');
 // esm
-import floatingBallCore from 'react-floating-ball';
+import FloatingBall from 'react-floating-ball';
 import React from 'react'
 import ReactDOM from 'react-dom'
 

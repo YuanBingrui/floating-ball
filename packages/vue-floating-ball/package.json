@@ -1,14 +1,19 @@
 {
-  "name": "@floating-ball/core",
-  "version": "1.0.4",
-  "description": "floating ball core",
+  "name": "vue3-floating-ball",
+  "version": "1.0.0",
+  "description": "A vue component for floating ball",
   "author": "xiaobaijun <bingrui_yuan0721@163.com>",
   "homepage": "https://github.com/YuanBingrui/floating-ball#readme",
   "license": "MIT",
   "keywords": [
+    "vue",
+    "vue3",
     "floating",
     "ball",
     "floating-ball",
+    "vue-floating-ball",
+    "vue3-floating-ball",
+    "vue-component",
     "front-end"
   ],
   "main": "index.js",
@@ -16,8 +21,8 @@
   "types": "cjs/index.d.ts",
   "files": [
     "index.js",
-    "cjs",
-    "es"
+    "es",
+    "cjs"
   ],
   "repository": {
     "type": "git",
@@ -29,17 +34,25 @@
   "scripts": {
     "build": "rollup -c"
   },
-  "dependencies": {
-    "tinycolor2": "^1.4.2"
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@types/tinycolor2": "^1.4.3",
+    "@types/node": "^17.0.22",
+    "postcss": "8.x",
     "rollup": "^2.70.1",
     "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
+    "rollup-plugin-vue": "^6.0.0",
+    "sass": "^1.49.9",
     "tslib": "^2.3.1",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.2",
+    "vue": "^3.2.31"
+  },
+  "dependencies": {
+    "@floating-ball/core": "^1.0.4"
   },
   "publishConfig": {
     "access": "public",

@@ -9,7 +9,7 @@ import './style.scss';
 export { Provider, useFBCore };
 
 const FloatingBallContain = ({
-  theme = '#595857',
+  theme = '#61dafb',
   position = 'top right',
   events = [],
 }: FloatingBallContainProps) => {
@@ -27,7 +27,7 @@ const FloatingBallContain = ({
         popoverEl: popoverRef.current,
       })
       .render();
-  }, [theme]);
+  }, [theme, position]);
 
   return (
     <Provider>
