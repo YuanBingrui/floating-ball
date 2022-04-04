@@ -15,6 +15,8 @@ pnpm add -D react-floating-ball
 
 ## Usage
 
+[Codesandbox](https://codesandbox.io/s/react-floating-ball-demo-et71vg?file=/src/App.js)
+
 ```
 // cjs
 const FloatingBall = require('react-floating-ball');

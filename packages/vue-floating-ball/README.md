@@ -15,12 +15,13 @@ pnpm add -D vue3-floating-ball
 
 ## Usage
 
+[Codesandbox](https://codesandbox.io/s/vue3-floatiing-ball-demo-xoyidq?file=/src/App.vue)
+
 ```
 
 // App.vue
 <script setup>
-import FloatingBall from 'vue3-floating-ball';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 
 const theme = ref('#42b883');
 const position = ref('top left');
@@ -45,7 +46,9 @@ const events = ref([
 
 // main.js
 import { createApp } from 'vue'
-createApp(App).mount('#app')
+import FloatingBall from 'vue3-floating-ball';
+
+createApp(App).use(FloatingBall).mount('#app')
 ```
 
 ## DOCS
