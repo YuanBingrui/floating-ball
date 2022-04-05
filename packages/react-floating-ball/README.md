@@ -70,7 +70,7 @@ ReactDOM.render(
 | Name   | Description |           Type            | default |
 | ------ | :---------: | :-----------------------: | ------: |
 | icon   | event icon  | String / React.ReactNode  |       - |
-| text   | event name  |          String           |       - |
+| text   | event name  | String / React.ReactNode  |       - |
 | handle |    event    | (item: EventItem) => void |       - |
 
 ### Provider and useFBCore()
