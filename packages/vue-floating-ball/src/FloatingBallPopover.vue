@@ -32,10 +32,10 @@ export default defineComponent({
       @click="handleClick(item)"
     >
       <div class="floating-ball-popover-item-icon">
-        <slot name="picon" :item="item">{{ (item as any).icon }}</slot>
+        <slot name="picon" :item="item">{{ item.icon }}</slot>
       </div>
       <div class="floating-ball-popover-item-word">
-        <slot name="ptext" :item="item">{{ (item as any).text }}</slot>
+        <slot name="ptext" :item="item">{{ item.text }}</slot>
       </div>
     </div>
   </div>

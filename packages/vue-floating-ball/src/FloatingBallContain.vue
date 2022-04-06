@@ -67,10 +67,10 @@ export default defineComponent({
     <FloatingBall ref="fbRef" />
     <FloatingBallPopover :items="events" ref="fbPopoverRef">
       <template v-slot:picon="{ item }">
-        <slot name="icon" :item="item">{{ (item as any).icon }}</slot>
+        <slot name="icon" :item="item">{{ item.icon }}</slot>
       </template>
       <template v-slot:ptext="{ item }">
-        <slot name="text" :item="item">{{ (item as any).text }}</slot>
+        <slot name="text" :item="item">{{ item.text }}</slot>
       </template>
     </FloatingBallPopover>
   </div>
