@@ -6,5 +6,12 @@
   ],
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "build:core": "lerna run build --scope=@floating-ball/core",
+    "build:react": "lerna run build --scope=react-floating-ball",
+    "build:vue": "lerna run build --scope=vue3-floating-ball",
+    "publish": "lerna publish"
   }
 }
