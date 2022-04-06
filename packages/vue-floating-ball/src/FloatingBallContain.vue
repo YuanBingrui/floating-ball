@@ -65,7 +65,14 @@ export default defineComponent({
 <template>
   <div class="floating-ball-contain" ref="fbContainRef">
     <FloatingBall ref="fbRef" />
-    <FloatingBallPopover :items="events" ref="fbPopoverRef" />
+    <FloatingBallPopover :items="events" ref="fbPopoverRef">
+      <template v-slot:picon="{ item }">
+        <slot name="icon" :item="item">{{ (item as any).icon }}</slot>
+      </template>
+      <template v-slot:ptext="{ item }">
+        <slot name="text" :item="item">{{ (item as any).text }}</slot>
+      </template>
+    </FloatingBallPopover>
   </div>
 </template>
 

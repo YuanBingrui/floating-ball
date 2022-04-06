@@ -63,11 +63,11 @@ createApp(App).use(FloatingBall).mount('#app')
 
 ### EventItem props
 
-| Name   | Description |           Type            | default |
-| ------ | :---------: | :-----------------------: | ------: |
-| icon   | event icon  |          String           |       - |
-| text   | event name  |          String           |       - |
-| handle |    event    | (item: EventItem) => void |       - |
+| Name   | Description |              Type               | default |
+| ------ | :---------: | :-----------------------------: | ------: |
+| icon   | event icon  | String / v-slot:icon="{ item }" |       - |
+| text   | event name  | String / v-slot:text="{ item }" |       - |
+| handle |    event    |    (item: EventItem) => void    |       - |
 
 ### useFBCore() and `$fb`
 

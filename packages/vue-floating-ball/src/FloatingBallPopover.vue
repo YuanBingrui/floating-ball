@@ -31,8 +31,12 @@ export default defineComponent({
       :key="index"
       @click="handleClick(item)"
     >
-      <div class="floating-ball-popover-item-icon">{{ item.icon }}</div>
-      <div class="floating-ball-popover-item-word">{{ item.text }}</div>
+      <div class="floating-ball-popover-item-icon">
+        <slot name="picon" :item="item">{{ (item as any).icon }}</slot>
+      </div>
+      <div class="floating-ball-popover-item-word">
+        <slot name="ptext" :item="item">{{ (item as any).text }}</slot>
+      </div>
     </div>
   </div>
 </template>
@@ -67,6 +71,13 @@ export default defineComponent({
       height: 3.4rem;
       font-size: 2.3rem;
       border-radius: 50%;
+      overflow: hidden;
+      img,
+      svg {
+        width: 70%;
+        height: 70%;
+        border-radius: 50%;
+      }
     }
     &-word {
       @include popover-common;
