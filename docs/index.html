@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Floating ball</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        font: normal 20px/1.4 'Recursive', Arial, Helvetica, sans-serif;
+        outline: none;
+      }
+      :root {
+        --react-primary-color: #61dafb;
+        --vue-primary-color: #42b883;
+      }
+      .switch {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 96px;
+      }
+      .switch button {
+        background-color: #fff;
+        border: 2px solid currentColor;
+        border-radius: 6px;
+        padding: 4px 16px;
+        cursor: pointer;
+      }
+      .switch button:first-child {
+        margin-right: 12px;
+        color: var(--react-primary-color);
+      }
+      .switch button:first-child:hover {
+        background-color: var(--react-primary-color);
+        opacity: 0.4;
+        color: #fff;
+      }
+      .switch button:last-child {
+        margin-left: 12px;
+        color: var(--vue-primary-color);
+      }
+      .switch button:last-child:hover {
+        background-color: var(--vue-primary-color);
+        opacity: 0.4;
+        color: #fff;
+      }
+      .switched-react {
+        background-color: var(--react-primary-color) !important;
+        opacity: 0.4;
+        color: #fff !important;
+      }
+      .switched-vue {
+        background-color: var(--vue-primary-color) !important;
+        opacity: 0.4;
+        color: #fff !important;
+      }
+    </style>
+    <script type="module" crossorigin src="./react/index.b0c68fba.js"></script>
+    <link rel="stylesheet" href="./react/index.cd9c0392.css" />
+
+    <script type="module" crossorigin src="./vue/index.908842c3.js"></script>
+    <link rel="stylesheet" href="./vue/index.f792605a.css" />
+  </head>
+  <body>
+    <div class="switch">
+      <button onclick="handleSwitch('react')" id="react">REACT</button>
+      <button onclick="handleSwitch('vue')" id="vue">VUE</button>
+    </div>
+    <div id="reactRoot">react</div>
+    <div id="vueRoot">vue</div>
+    <script>
+      let globalType = 'react';
+      function handleSwitch(type) {
+        globalType = type;
+        switchStyle();
+        render();
+      }
+      function switchStyle(type) {
+        const t = globalType === 'react' ? 'vue' : 'react';
+        document.querySelector(`#${t}`).classList.remove(`switched-${t}`);
+        document
+          .querySelector(`#${globalType}`)
+          .classList.add(`switched-${globalType}`);
+      }
+      function render() {
+        const t = globalType === 'react' ? 'vue' : 'react';
+        document.querySelector(`#${t}Root`).style.display = 'none';
+        document.querySelector(`#${globalType}Root`).style.display = 'block';
+      }
+
+      (function () {
+        switchStyle();
+        render();
+      })();
+    </script>
+  </body>
+</html>

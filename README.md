@@ -1,4 +1,4 @@
-# floating-ball
+# floating-ball Demo
 
 a floating ball package, that includes `core`, `react-floating-ball` and `vue-floating-ball` three packages, and go to each package for detail
 
