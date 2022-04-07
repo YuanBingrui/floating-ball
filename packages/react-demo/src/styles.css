@@ -1,0 +1,44 @@
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px;
+}
+.slider-wrapper {
+  margin-left: 48px;
+}
+.select-wrapper {
+  margin-left: 48px;
+  width: 170px;
+}
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+.positon-wrapper {
+  display: flex;
+  height: 200px;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .app {
+    padding-top: 24px;
+    flex-direction: column;
+  }
+  .title-box {
+    margin-bottom: 32px;
+  }
+  .positon-wrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slider-wrapper {
+    margin-left: 0;
+  }
+  .select-wrapper {
+    margin-left: 0;
+    margin-top: 24px;
+  }
+}

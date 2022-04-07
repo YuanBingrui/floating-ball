@@ -12,10 +12,15 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.6",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
+    "lodash.debounce": "4.0.8",
+    "rc-slider": "10.0.0-alpha.6",
+    "react-colorful": "5.5.1",
     "react-floating-ball": "^1.0.8",
+    "react-select": "5.2.2",
     "typescript": "^4.5.4",
     "vite": "^2.9.0"
   }
