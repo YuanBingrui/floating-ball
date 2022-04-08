@@ -1,18 +1,21 @@
 .app {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding-top: 150px;
+  min-height: 100vh;
   font: normal 20px/1.4 'Recursive', Arial, Helvetica, sans-serif;
   color: #61dafb;
-  padding-left: 12%;
-}
-.slider-wrapper {
-  margin-left: 48px;
 }
 .select-wrapper {
-  margin-left: 48px;
-  width: 170px;
+  margin-left: 8px;
+  margin-top: 28%;
+  width: 175px;
+}
+.slider-and-select {
+  display: flex;
+}
+.title-box-margin {
+  margin-bottom: 24px;
 }
 .title {
   text-align: center;
@@ -26,7 +29,7 @@
   align-items: center;
 }
 .introduce-box {
-  margin-right: 40px;
+  margin-left: 60px;
 }
 .introduce {
   margin-bottom: 16px;
@@ -54,9 +57,7 @@
 }
 @media screen and (max-width: 768px) {
   .app {
-    padding-top: 24px;
-    padding-left: 0;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
   }
   .title-box {
@@ -66,15 +67,17 @@
     flex-direction: column;
     justify-content: center;
   }
-  .slider-wrapper {
-    margin-left: 0;
+  .title-box-margin {
+    margin-right: 0;
   }
   .select-wrapper {
     margin-left: 0;
-    margin-top: 24px;
+    margin-top: 28%;
   }
   .introduce-box {
-    margin-right: 0;
+    text-align: center;
+    margin-left: 0;
+    margin-bottom: 24px;
   }
   .introduce {
     font-size: 32px;
@@ -83,6 +86,8 @@
     font-size: 20px;
   }
   .about-link {
+    display: flex;
+    justify-content: center;
     margin-top: 16px;
     margin-bottom: 16px;
   }

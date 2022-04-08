@@ -8,7 +8,6 @@ const replace = require('gulp-replace');
 const basePath = process.cwd();
 const docsDir = path.join(basePath, 'docs/**/*');
 const reactSorce = path.join(basePath, 'packages/react-demo/dist');
-const vueSorce = path.join(basePath, 'packages/vue-demo/dist');
 const outDir = path.join(basePath, 'docs/');
 const templatePath = path.join(basePath, 'scripts/index.html');
 const extensions = ['.js', '.css', '.png', '.jpg', '.gif', '.svg'];
@@ -20,7 +19,7 @@ const generateExtsByPath = (path, exts) => {
 
 function CopyFn() {
   return gulp
-    .src([...generateExtsByPath(reactSorce), ...generateExtsByPath(vueSorce)])
+    .src([...generateExtsByPath(reactSorce)])
     .pipe(copy(outDir, { prefix: 3 }));
 }
 

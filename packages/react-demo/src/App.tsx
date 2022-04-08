@@ -32,41 +32,45 @@ export default function App() {
 
   return (
     <div className='app'>
-      <div className='introduce-box'>
-        <h1 className='introduce'>React Floating Ball</h1>
-        <h2 className='introduce-desc'>A floating ball component for React.</h2>
-        <div className='about-link'>
-          <a href='https://github.com/YuanBingrui/floating-ball/tree/main/packages/react-floating-ball'>
-            Github
-          </a>
-          <a href='https://www.npmjs.com/package/react-floating-ball'>NPM</a>
+      <div>
+        <div className='title-box title-box-margin'>
+          <div className='title'>主题色(theme)</div>
+          <HexColorPicker color={color} onChange={setColor} />
+        </div>
+        <div className='title-box'>
+          <div className='title'>初始位置(position)</div>
+          <div className='positon-wrapper'>
+            <div className='slider-wrapper'>
+              <div className='slider-and-select'>
+                <Slider
+                  vertical
+                  reverse
+                  style={{ height: 155 }}
+                  onChange={(val) => handleSiderChange(val, 'H')}
+                />
+                <div className='select-wrapper'>
+                  <Select
+                    options={options}
+                    onChange={(e: any) => setPosition(e.value)}
+                  />
+                </div>
+              </div>
+              <Slider
+                style={{ marginTop: 12, width: 200 }}
+                onChange={(val) => handleSiderChange(val, 'V')}
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div className='title-box'>
-        <div className='title'>主题色(theme)</div>
-        <HexColorPicker color={color} onChange={setColor} />
-      </div>
-      <div className='title-box'>
-        <div className='title'>初始位置(position)</div>
-        <div className='positon-wrapper'>
-          <div className='slider-wrapper'>
-            <Slider
-              vertical
-              reverse
-              style={{ height: 140 }}
-              onChange={(val) => handleSiderChange(val, 'H')}
-            />
-            <Slider
-              style={{ marginTop: 12, width: 150 }}
-              onChange={(val) => handleSiderChange(val, 'V')}
-            />
-          </div>
-          <div className='select-wrapper'>
-            <Select
-              options={options}
-              onChange={(e: any) => setPosition(e.value)}
-            />
-          </div>
+      <div className='introduce-box'>
+        <h1 className='introduce'>Floating Ball</h1>
+        <h2 className='introduce-desc'>
+          A floating ball component for React and Vue3.
+        </h2>
+        <div className='about-link'>
+          <a href='https://github.com/YuanBingrui/floating-ball'>Github</a>
+          <a href='https://www.npmjs.com/package/react-floating-ball'>NPM</a>
         </div>
       </div>
       <FloatingBall

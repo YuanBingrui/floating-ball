@@ -17,8 +17,8 @@
     "deps": "lerna bootstrap",
     "build": "lerna run build",
     "build:react": "lerna run build --scope=react-demo",
-    "build:vue": "lerna run build --scope=vue-demo",
     "handle": "node ./scripts/index.js",
+    "ghp": "gh-pages -d docs",
     "deploy": "yarn run build && yarn run handle && gh-pages -d docs"
   }
 }
