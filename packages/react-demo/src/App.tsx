@@ -32,6 +32,16 @@ export default function App() {
 
   return (
     <div className='app'>
+      <div className='introduce-box'>
+        <h1 className='introduce'>React Floating Ball</h1>
+        <h2 className='introduce-desc'>A floating ball component for React.</h2>
+        <div className='about-link'>
+          <a href='https://github.com/YuanBingrui/floating-ball/tree/main/packages/react-floating-ball'>
+            Github
+          </a>
+          <a href='https://www.npmjs.com/package/react-floating-ball'>NPM</a>
+        </div>
+      </div>
       <div className='title-box'>
         <div className='title'>主题色(theme)</div>
         <HexColorPicker color={color} onChange={setColor} />

@@ -72,32 +72,42 @@ export default defineComponent({
 <template>
   <div class="app">
     <floating-ball :theme="theme" :position="position" :events="events" />
-    <div class="tools">
-      <div class="title-box">
-        <div class="title">主题色(theme)</div>
-        <color-picker
-          theme="light"
-          :color="theme"
-          :sucker-hide="true"
-          :sucker-canvas="null"
-          :sucker-area="[]"
-          @changeColor="changeColor"
-        />
+    <div className="introduce-box">
+      <h1 className="introduce">Vue3 Floating Ball</h1>
+      <h2 className="introduce-desc">A floating ball component for Vue3.</h2>
+      <div className="about-link">
+        <a
+          href="https://github.com/YuanBingrui/floating-ball/tree/main/packages/vue-floating-ball"
+        >
+          Github
+        </a>
+        <a href="https://www.npmjs.com/package/vue3-floating-ball">NPM</a>
       </div>
-      <div class="title-box title-box-margin">
-        <div class="title">初始位置(position)</div>
-        <div class="position">
-          <VueSlider
-            direction="ttb"
-            style="height: 150px; margin: 12px 0"
-            @change="(e) => handleSlider(e, 'H')"
-          />
-          <VueSlider
-            style="width: 180px; margin-bottom: 12px"
-            @change="(e) => handleSlider(e, 'V')"
-          />
-          <v-select :options="options" v-model="p" />
-        </div>
+    </div>
+    <div class="title-box">
+      <div class="title">主题色(theme)</div>
+      <color-picker
+        theme="light"
+        :color="theme"
+        :sucker-hide="true"
+        :sucker-canvas="null"
+        :sucker-area="[]"
+        @changeColor="changeColor"
+      />
+    </div>
+    <div class="title-box title-box-margin">
+      <div class="title">初始位置(position)</div>
+      <div class="position">
+        <VueSlider
+          direction="ttb"
+          style="height: 150px; margin: 12px 0"
+          @change="(e) => handleSlider(e, 'H')"
+        />
+        <VueSlider
+          style="width: 180px; margin-bottom: 12px"
+          @change="(e) => handleSlider(e, 'V')"
+        />
+        <v-select :options="options" v-model="p" />
       </div>
     </div>
   </div>
@@ -106,13 +116,12 @@ export default defineComponent({
 <style>
 .app {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding-top: 150px;
-}
-.tools {
-  display: flex;
-  justify-content: center;
+  font: normal 20px/1.4 'Recursive', Arial, Helvetica, sans-serif;
+  color: #42b883;
+  padding-left: 12%;
 }
 .position {
   height: 338px;
@@ -129,12 +138,39 @@ export default defineComponent({
   font-weight: bold;
   margin-bottom: 32px;
 }
+.introduce-box {
+  margin-right: 40px;
+}
+.introduce {
+  margin-bottom: 16px;
+  font-size: 44px;
+  line-height: 1;
+}
+.introduce-desc {
+  max-width: 13em;
+}
+.about-link {
+  display: flex;
+  margin-top: 32px;
+}
+.about-link a {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin-right: 16px;
+  color: inherit;
+  text-decoration: none;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  padding: 0 12px;
+  opacity: 0.8;
+}
 @media (max-width: 768px) {
   .app {
     padding-top: 24px;
-  }
-  .tools {
+    padding-left: 0;
     flex-direction: column;
+    justify-content: center;
   }
   .title-box {
     margin-bottom: 16px;
@@ -147,6 +183,19 @@ export default defineComponent({
   }
   .position {
     height: auto;
+  }
+  .introduce-box {
+    margin-right: 0;
+  }
+  .introduce {
+    font-size: 32px;
+  }
+  .introduce-desc {
+    font-size: 20px;
+  }
+  .about-link {
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 }
 </style>
