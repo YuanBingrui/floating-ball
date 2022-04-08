@@ -10,3 +10,6 @@ yarn-error.log*
 /.changelog
 .npm/
 packages/**/dist/
+packages/**/core/
+packages/**/react-floating-ball/
+packages/**/vue-floating-ball/

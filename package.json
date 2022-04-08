@@ -14,6 +14,7 @@
     "gulp-replace": "^1.1.3"
   },
   "scripts": {
+    "deps": "lerna bootstrap",
     "build": "lerna run build",
     "build:react": "lerna run build --scope=react-demo",
     "build:vue": "lerna run build --scope=vue-demo",
