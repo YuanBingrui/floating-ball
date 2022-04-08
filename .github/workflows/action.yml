@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 16
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: yarn run deps
       - run: yarn run build
 
   publish-lerna:
@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - name: lerna publish
+      - name: Lerna publish
         run: yarn run publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
