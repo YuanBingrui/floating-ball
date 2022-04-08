@@ -15,6 +15,7 @@
     "@types/lodash.debounce": "^4.0.6",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
+    "@types/tinycolor2": "^1.4.3",
     "@vitejs/plugin-react": "^1.0.7",
     "lodash.debounce": "4.0.8",
     "rc-slider": "10.0.0-alpha.6",

@@ -62,7 +62,10 @@ export default function App() {
             />
           </div>
           <div className='select-wrapper'>
-            <Select options={options} onChange={(e) => setPosition(e.value)} />
+            <Select
+              options={options}
+              onChange={(e: any) => setPosition(e.value)}
+            />
           </div>
         </div>
       </div>
