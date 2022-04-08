@@ -9,5 +9,6 @@ yarn-debug.log*
 yarn-error.log*
 /.changelog
 .npm/
-packages/**/cjs/
-packages/**/es/
+packages/**/dist/
+packages/vue-demo/
+packages/react-demo/
