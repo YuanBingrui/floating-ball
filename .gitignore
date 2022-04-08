@@ -10,5 +10,5 @@ yarn-error.log*
 /.changelog
 .npm/
 packages/**/dist/
-packages/vue-demo/
-packages/react-demo/
+packages/**/es/
+packages/**/cjs/
