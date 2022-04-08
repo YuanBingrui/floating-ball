@@ -12,6 +12,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install dependencies
+      - name: Install dependencies and Build
         run: yarn run deps
-      - run: yarn run deploy
+      - run: yarn run build
+      - run: yarn run handle
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          branch: gh-pages
+          folder: docs
