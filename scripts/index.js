@@ -7,7 +7,7 @@ const replace = require('gulp-replace');
 
 const basePath = process.cwd();
 const docsDir = path.join(basePath, 'docs/**/*');
-const docsSource = path.join(basePath, 'packages/docs/dist');
+const docsSource = path.join(basePath, 'packages/docs/build');
 const outDir = path.join(basePath, 'docs/');
 const templatePath = path.join(basePath, 'scripts/index.html');
 const extensions = ['.js', '.css', '.png', '.jpg', '.gif', '.svg'];

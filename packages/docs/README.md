@@ -5,7 +5,7 @@
 ## dev
 
 ```
-yarn run dev
+yarn run start
 ```
 
 ## Build

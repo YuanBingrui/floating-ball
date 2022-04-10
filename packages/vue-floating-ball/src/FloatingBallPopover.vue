@@ -68,7 +68,7 @@ export default defineComponent({
     }
     &-icon {
       @include popover-common;
-      height: 3.4rem;
+      height: 3.8rem;
       font-size: 2.3rem;
       border-radius: 50%;
       overflow: hidden;

@@ -1,28 +1,47 @@
 {
-  "name": "docs",
-  "private": true,
+  "name": "floating-ball-docs",
   "version": "1.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
+  "private": true,
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-floating-ball": "^1.0.8"
-  },
-  "devDependencies": {
     "@types/lodash.debounce": "^4.0.6",
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
+    "@types/node": "^16.11.26",
+    "@types/react": "^17.0.44",
+    "@types/react-dom": "^17.0.15",
     "@types/tinycolor2": "^1.4.3",
-    "@vitejs/plugin-react": "^1.0.7",
     "lodash.debounce": "4.0.8",
     "rc-slider": "10.0.0-alpha.6",
+    "react": "^17.0.2",
     "react-colorful": "5.5.1",
+    "react-dom": "^17.0.2",
+    "react-floating-ball": "^1.0.8",
+    "react-scripts": "5.0.0",
     "react-select": "5.2.2",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.0"
+    "typescript": "^4.6.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
