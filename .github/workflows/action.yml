@@ -16,6 +16,9 @@ jobs:
         run: yarn run deps
       - run: yarn run build
 
+      - name: Handle
+        run: yarn run handle
+
   publish-lerna:
     needs: build
     runs-on: ubuntu-latest
@@ -31,20 +34,10 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   publish-docs:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: yarn run deps
-      - run: yarn run build:docs
-
-      - name: Handle
-        run: yarn run handle
-
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
