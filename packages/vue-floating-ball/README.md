@@ -25,6 +25,7 @@ import { ref } from 'vue';
 
 const theme = ref('#42b883');
 const position = ref('top left');
+const column = ref(2);
 const events = ref([
   { icon: 'H', text: 'home', handle: (e) => console.log(e) },
   {
@@ -41,7 +42,7 @@ const events = ref([
 </script>
 
 <template>
-  <floating-ball :theme="theme" :position="position" :events="events" />
+  <floating-ball :theme="theme" :position="position" :events="events" :column="column" />
 </template>
 
 // main.js
@@ -59,6 +60,7 @@ createApp(App).use(FloatingBall).mount('#app')
 | -------- | :-----------------------------------------------------: | :--------------: | -------: |
 | theme    |             set floating ball primary color             |      String      |  #42b883 |
 | position | set floating ball init position.(top/bottom/left/right) |      String      | top left |
+| column   |      set floating ball column of popover.(max: 4)       |      Number      |        2 |
 | events   |  events will be displayed on the floating ball popover  | Array<EventItem> |       [] |
 
 ### EventItem props

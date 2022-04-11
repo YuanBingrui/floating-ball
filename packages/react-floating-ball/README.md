@@ -30,6 +30,7 @@ function App() {
     <FloatingBall
       theme='#61dafb'
       position='top left'
+      column={2}
       events={[
         { icon: 'H', text: 'home', handle: (e) => console.log(e) },
         {
@@ -63,6 +64,7 @@ ReactDOM.render(
 | -------- | :-----------------------------------------------------: | :--------------: | -------: |
 | theme    |             set floating ball primary color             |      String      |  #61dafb |
 | position | set floating ball init position.(top/bottom/left/right) |      String      | top left |
+| column   |      set floating ball column of popover.(max: 4)       |      Number      |        2 |
 | events   |  events will be displayed on the floating ball popover  | Array<EventItem> |       [] |
 
 ### EventItem props
