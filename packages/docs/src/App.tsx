@@ -86,6 +86,7 @@ export default function App() {
         theme={color}
         position={position}
         column={column}
+        canMove={true}
         events={[
           { icon: 'H', text: 'homeeeee', handle: (e) => console.log(e) },
           {

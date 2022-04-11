@@ -30,14 +30,17 @@ class FloatBall {
   };
   private data: { isShow: boolean };
   private position: string;
+  private canMove: boolean;
 
   constructor(
     theme?: tinycolor.ColorInput,
     position?: string,
-    column?: number
+    column?: number,
+    canMove?: boolean
   ) {
     this.theme = color2Rgba(theme);
     this.column = Math.min(column ?? 2, 4);
+    this.canMove = canMove ?? true;
     this.terminalType = terminalRegex.test(navigator.userAgent)
       ? 'mobile'
       : 'computer';
@@ -160,6 +163,10 @@ class FloatBall {
   }
   setColumn(column: number) {
     this.column = Math.min(column ?? this.column, 4);
+    return this;
+  }
+  setCanMove(move: boolean) {
+    this.canMove = move;
     return this;
   }
   getRowAndCol() {
@@ -423,7 +430,8 @@ class FloatBall {
 
     _self.floatingBallBoxEl?.appendChild(_self.nodeToFragment('down'));
 
-    document.addEventListener('mousemove', _self.onDocumentMouseMove, false);
+    _self.canMove &&
+      document.addEventListener('mousemove', _self.onDocumentMouseMove, false);
     _self.floatingBallBoxEl?.addEventListener(
       'mouseup',
       _self.onDocumentMouseUp,
@@ -459,7 +467,12 @@ class FloatBall {
     event?.preventDefault();
     const _self = this;
     _self.floatingBallBoxEl?.appendChild(_self.nodeToFragment('up'));
-    document.removeEventListener('mousemove', _self.onDocumentMouseMove, false);
+    _self.canMove &&
+      document.removeEventListener(
+        'mousemove',
+        _self.onDocumentMouseMove,
+        false
+      );
     _self.floatingBallBoxEl?.removeEventListener(
       'mouseup',
       _self.onDocumentMouseUp,
@@ -480,11 +493,13 @@ class FloatBall {
 
     _self.floatingBallBoxEl?.appendChild(_self.nodeToFragment('down'));
 
-    let touch = event.touches[0];
-    let presentPosition = _self.getPresentPosition(touch);
+    if (_self.canMove) {
+      let touch = event.touches[0];
+      let presentPosition = _self.getPresentPosition(touch);
 
-    floatingBallParentEl.style.left = presentPosition.presentX + 'px';
-    floatingBallParentEl.style.top = presentPosition.presentY + 'px';
+      floatingBallParentEl.style.left = presentPosition.presentX + 'px';
+      floatingBallParentEl.style.top = presentPosition.presentY + 'px';
+    }
   }
 
   onDocumentTouchMove(event: TouchEvent) {
@@ -496,11 +511,13 @@ class FloatBall {
 
     data.isShow = ((popoverEl.style.transform = 'scale(0, 0)'), false);
 
-    let touch = event.touches[0];
-    let presentPosition = this.getPresentPosition(touch);
+    if (_self.canMove) {
+      let touch = event.touches[0];
+      let presentPosition = this.getPresentPosition(touch);
 
-    floatingBallParentEl.style.left = presentPosition.presentX + 'px';
-    floatingBallParentEl.style.top = presentPosition.presentY + 'px';
+      floatingBallParentEl.style.left = presentPosition.presentX + 'px';
+      floatingBallParentEl.style.top = presentPosition.presentY + 'px';
+    }
   }
 
   onDocumentTouchEnd(event: TouchEvent) {

@@ -12,6 +12,7 @@ const FloatingBallContain = ({
   theme = '#61dafb',
   position = 'top right',
   column = 2,
+  canMove = true,
   events = [],
 }: FloatingBallContainProps) => {
   const fbContainRef = useRef<HTMLDivElement | null>(null);
@@ -23,13 +24,14 @@ const FloatingBallContain = ({
       .setTheme(theme)
       .setPosition(position)
       .setColumn(column)
+      .setCanMove(canMove)
       .collectAllEls({
         floatingBallParentEl: fbContainRef.current,
         floatingBallBoxEl: fbRef.current,
         popoverEl: popoverRef.current,
       })
       .render();
-  }, [theme, position, column]);
+  }, [theme, position, column, canMove]);
 
   return (
     <Provider>

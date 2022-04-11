@@ -13,5 +13,6 @@ export interface FloatingBallContainProps {
   theme?: string;
   position?: string;
   column?: number;
+  canMove?: boolean;
   events?: Item[];
 }

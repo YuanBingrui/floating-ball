@@ -61,6 +61,7 @@ createApp(App).use(FloatingBall).mount('#app')
 | theme    |             set floating ball primary color             |      String      |  #42b883 |
 | position | set floating ball init position.(top/bottom/left/right) |      String      | top left |
 | column   |      set floating ball column of popover.(max: 4)       |      Number      |        2 |
+| canMove  |       control the floating ball can move by mouse       |     Boolean      |     true |
 | events   |  events will be displayed on the floating ball popover  | Array<EventItem> |       [] |
 
 ### EventItem props

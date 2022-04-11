@@ -19,6 +19,10 @@ export default defineComponent({
       type: Number,
       default: 2,
     },
+    canMove: {
+      type: Boolean,
+      default: true,
+    },
     events: {
       type: Array,
       default: () => [],
@@ -39,6 +43,7 @@ export default defineComponent({
         .setTheme(props.theme)
         .setPosition(props.position)
         .setColumn(props.column)
+        .setCanMove(props.canMove)
         .collectAllEls({
           floatingBallParentEl: fbContainRef.value,
           floatingBallBoxEl: fbRef.value?.$el,
@@ -62,6 +67,12 @@ export default defineComponent({
       () => props.column,
       () => {
         fbCore.setColumn(props.column).render();
+      }
+    );
+    watch(
+      () => props.canMove,
+      () => {
+        fbCore.setCanMove(props.canMove).render();
       }
     );
     return {
