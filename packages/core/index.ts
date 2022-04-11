@@ -31,6 +31,7 @@ class FloatBall {
   private data: { isShow: boolean };
   private position: string;
   private canMove: boolean;
+  private isFullscreen: boolean;
 
   constructor(
     theme?: tinycolor.ColorInput,
@@ -59,6 +60,7 @@ class FloatBall {
       maxY: 0,
     };
     this.data = { isShow: false };
+    this.isFullscreen = false;
     this.position = position || 'bottom right';
 
     this.onDocumentMouseDown = this.onDocumentMouseDown.bind(this);
@@ -105,6 +107,15 @@ class FloatBall {
         false
       );
     }
+
+    document.onfullscreenchange = function () {
+      _self.isFullscreen = !!document.fullscreenElement;
+      _self.viewContentH = _self.isFullscreen
+        ? window.screen.height
+        : window.screen.height - 100;
+      _self.initBallByPosition(_self.position);
+    };
+
     return this;
   }
   removeEvents() {

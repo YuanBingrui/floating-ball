@@ -23,6 +23,14 @@ export default function App() {
   const [V, setV] = useState(0);
   const [column, setColumn] = useState(2);
 
+  const handleFullscreen = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
+  };
+
   const handleSiderChange = debounce((val, type) => {
     if (type === 'H') {
       setH(val);
@@ -37,7 +45,9 @@ export default function App() {
     <div className='app'>
       <div>
         <div className='title-box title-box-margin'>
-          <div className='title'>主题色(theme)</div>
+          <div className='title' onClick={handleFullscreen}>
+            主题色(theme)
+          </div>
           <HexColorPicker color={color} onChange={setColor} />
         </div>
         <div className='title-box title-box-margin'>
