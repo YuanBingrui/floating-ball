@@ -38,7 +38,7 @@ export default defineComponent({
       fbCore
         .setTheme(props.theme)
         .setPosition(props.position)
-        .setColumn(column)
+        .setColumn(props.column)
         .collectAllEls({
           floatingBallParentEl: fbContainRef.value,
           floatingBallBoxEl: fbRef.value?.$el,
