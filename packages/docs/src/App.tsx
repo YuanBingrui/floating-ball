@@ -3,7 +3,9 @@ import FloatingBall from 'react-floating-ball';
 import { HexColorPicker } from 'react-colorful';
 import Select from 'react-select';
 import Slider from 'rc-slider';
+import InputNumber from 'rc-input-number';
 import debounce from 'lodash.debounce';
+import 'rc-input-number/assets/index.css';
 import 'rc-slider/assets/index.css';
 import './styles.css';
 
@@ -19,6 +21,7 @@ export default function App() {
   const [position, setPosition] = useState('top left');
   const [H, setH] = useState(0);
   const [V, setV] = useState(0);
+  const [column, setColumn] = useState(2);
 
   const handleSiderChange = debounce((val, type) => {
     if (type === 'H') {
@@ -37,7 +40,7 @@ export default function App() {
           <div className='title'>主题色(theme)</div>
           <HexColorPicker color={color} onChange={setColor} />
         </div>
-        <div className='title-box'>
+        <div className='title-box title-box-margin'>
           <div className='title'>初始位置(position)</div>
           <div className='positon-wrapper'>
             <div className='slider-wrapper'>
@@ -62,6 +65,12 @@ export default function App() {
             </div>
           </div>
         </div>
+        <div className='title-box'>
+          <div className='title'>列数(column)</div>
+          <div className='title-body'>
+            <InputNumber value={column} min={1} max={7} onChange={setColumn} />
+          </div>
+        </div>
       </div>
       <div className='introduce-box'>
         <h1 className='introduce'>Floating Ball</h1>
@@ -76,16 +85,27 @@ export default function App() {
       <FloatingBall
         theme={color}
         position={position}
+        column={column}
         events={[
-          { icon: 'H', text: 'home', handle: (e) => console.log(e) },
+          { icon: 'H', text: 'homeeeee', handle: (e) => console.log(e) },
           {
             icon: 'O',
-            text: 'home2',
+            text: 'hhhhhhome2',
             handle: (e) => console.log(e),
           },
           {
             icon: 'M',
             text: 'home3',
+            handle: (e) => console.log(e),
+          },
+          {
+            icon: 'M4',
+            text: 'home4',
+            handle: (e) => console.log(e),
+          },
+          {
+            icon: 'M5',
+            text: 'home5',
             handle: (e) => console.log(e),
           },
         ]}

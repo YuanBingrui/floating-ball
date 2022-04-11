@@ -11,6 +11,7 @@ export { Provider, useFBCore };
 const FloatingBallContain = ({
   theme = '#61dafb',
   position = 'top right',
+  column = 2,
   events = [],
 }: FloatingBallContainProps) => {
   const fbContainRef = useRef<HTMLDivElement | null>(null);
@@ -21,13 +22,14 @@ const FloatingBallContain = ({
     fbCore
       .setTheme(theme)
       .setPosition(position)
+      .setColumn(column)
       .collectAllEls({
         floatingBallParentEl: fbContainRef.current,
         floatingBallBoxEl: fbRef.current,
         popoverEl: popoverRef.current,
       })
       .render();
-  }, [theme, position]);
+  }, [theme, position, column]);
 
   return (
     <Provider>

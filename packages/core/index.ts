@@ -3,8 +3,19 @@ import tinycolor from 'tinycolor2';
 const terminalRegex: RegExp = /Android|webOS|iPhone|iPod|BlackBerry/i;
 const defaultColor: string = '#202a31';
 
+const calculateNthChildByColumn = (col: number) => `
+.floating-ball-popover-item:nth-child(${col}n + ${col}) {
+  margin-right: 0;
+}
+`;
+const calculateNthLastChildByColumn = (
+  last: number
+) => `.floating-ball-popover-item:nth-last-child(-n + ${last}) {
+    margin-bottom: 0;
+  }`;
 class FloatBall {
   private theme: tinycolor.Instance;
+  private column: number;
   private terminalType: 'mobile' | 'computer';
   private viewContentW: number;
   private viewContentH: number;
@@ -20,8 +31,13 @@ class FloatBall {
   private data: { isShow: boolean };
   private position: string;
 
-  constructor(theme?: tinycolor.ColorInput, position?: string) {
+  constructor(
+    theme?: tinycolor.ColorInput,
+    position?: string,
+    column?: number
+  ) {
     this.theme = color2Rgba(theme);
+    this.column = Math.min(column ?? 2, 4);
     this.terminalType = terminalRegex.test(navigator.userAgent)
       ? 'mobile'
       : 'computer';
@@ -129,6 +145,9 @@ class FloatBall {
     this.bindEvents();
     this.floatingBallBoxEl?.appendChild(this.nodeToFragment('init'));
     this.initBallByPosition(this.position);
+    const [row, col, children] = this.getRowAndCol();
+    removeStyleElByID();
+    injectCssByColumn(col, children);
     return this;
   }
   setTheme(theme: tinycolor.ColorInput) {
@@ -138,6 +157,22 @@ class FloatBall {
   setPosition(position: string) {
     this.position = position;
     return this;
+  }
+  setColumn(column: number) {
+    this.column = Math.min(column ?? this.column, 4);
+    return this;
+  }
+  getRowAndCol() {
+    const popoverNode = this.popoverEl as HTMLElement;
+    if (!popoverNode) {
+      return [0, this.column, 0];
+    }
+    const popoverChildrenNum = popoverNode.children.length || 1;
+    return [
+      Math.ceil(popoverChildrenNum / this.column),
+      this.column,
+      popoverChildrenNum,
+    ];
   }
   getRgbaColor(alpha?: number): string {
     this.theme.setAlpha(alpha ?? 0.7);
@@ -214,11 +249,17 @@ class FloatBall {
     const data = this.data;
     let nearThresholdY = this.viewContentH * 0.15;
     let nearThresholdX = this.viewContentW * 0.15;
-    let tempPopoverEventNum = computedPopoverNum() - 2;
-    let popoverStatus = data.isShow ? 10 + tempPopoverEventNum * 5 : 0;
+    let [row, col] = this.getRowAndCol();
+    const floatingBallW = 56;
+    const floatingBallHalfW = floatingBallW / 2;
+    const popoverBoxW = 24 + 60 * col + 32 * (col - 1);
+    const popoverBoxHalfW = popoverBoxW / 2;
+    const popoverBoxH = 24 + 76 * row + 4 * (row - 1);
+    const popoverBoxHalfH = popoverBoxH / 2;
+    const radiusOffset = (1 - 1 / Math.sqrt(2)) * (32 + floatingBallHalfW);
+
     if (data.isShow) {
-      popoverNode.style.width = 10 + 'rem';
-      popoverNode.style.height = popoverStatus + 'rem';
+      popoverNode.style.width = `${popoverBoxW - 24}px`;
       popoverNode.style.background = this.getRgbaColor(0.65);
     }
     popoverNode.style.transform = data.isShow ? 'scale(1, 1)' : 'scale(0, 0)';
@@ -232,16 +273,16 @@ class FloatBall {
         floatingballParentLeft > range.minX + nearThresholdX &&
         floatingballParentLeft < range.maxX - nearThresholdX
       ) {
-        popoverNode.style.top = 3.5 + 'rem';
-        popoverNode.style.left = -3.25 + 'rem';
+        popoverNode.style.top = `${floatingBallW}px`;
+        popoverNode.style.left = `${-(popoverBoxHalfW - floatingBallHalfW)}px`;
         popoverNode.style.transformOrigin = '50% 0';
       } else if (floatingballParentLeft < range.minX + nearThresholdX) {
-        popoverNode.style.top = 2.5 + 'rem';
-        popoverNode.style.left = 2.5 + 'rem';
+        popoverNode.style.top = `${floatingBallW - radiusOffset}px`;
+        popoverNode.style.left = `${floatingBallW - radiusOffset}px`;
         popoverNode.style.transformOrigin = '0 0';
       } else {
-        popoverNode.style.top = 2.5 + 'rem';
-        popoverNode.style.left = -9 + 'rem';
+        popoverNode.style.top = `${floatingBallW - radiusOffset}px`;
+        popoverNode.style.left = `${-(popoverBoxW - radiusOffset)}px`;
         popoverNode.style.transformOrigin = '100% 0';
       }
     }
@@ -250,16 +291,16 @@ class FloatBall {
         floatingballParentLeft > range.minX + nearThresholdX &&
         floatingballParentLeft < range.maxX - nearThresholdX
       ) {
-        popoverNode.style.top = -(10 + 5 * tempPopoverEventNum) + 'rem';
-        popoverNode.style.left = -3.25 + 'rem';
+        popoverNode.style.top = `${-popoverBoxH}px`;
+        popoverNode.style.left = `${-(popoverBoxHalfW - floatingBallHalfW)}px`;
         popoverNode.style.transformOrigin = '50% 100%';
       } else if (floatingballParentLeft < range.minX + nearThresholdX) {
-        popoverNode.style.top = -(9 + 5 * tempPopoverEventNum) + 'rem';
-        popoverNode.style.left = 2.5 + 'rem';
+        popoverNode.style.top = `${-(popoverBoxH - radiusOffset)}px`;
+        popoverNode.style.left = `${floatingBallW - radiusOffset}px`;
         popoverNode.style.transformOrigin = '0 100%';
       } else {
-        popoverNode.style.top = -(9 + 5 * tempPopoverEventNum) + 'rem';
-        popoverNode.style.left = -9.5 + 'rem';
+        popoverNode.style.top = `${-(popoverBoxH - radiusOffset)}px`;
+        popoverNode.style.left = `${-(popoverBoxW - radiusOffset)}px`;
         popoverNode.style.transformOrigin = '100% 100%';
       }
     }
@@ -268,23 +309,18 @@ class FloatBall {
       floatingballParentTop < range.maxY - nearThresholdY
     ) {
       if (floatingballParentLeft < range.minX + nearThresholdX) {
-        popoverNode.style.top = -(3.25 + 2.5 * tempPopoverEventNum) + 'rem';
-        popoverNode.style.left = 3.5 + 'rem';
+        popoverNode.style.top = `${-(popoverBoxHalfH - floatingBallHalfW)}px`;
+        popoverNode.style.left = `${floatingBallW}px`;
         popoverNode.style.transformOrigin = '0 50%';
       } else if (floatingballParentLeft > range.maxX - nearThresholdX) {
-        popoverNode.style.top = -(3.25 + 2.5 * tempPopoverEventNum) + 'rem';
-        popoverNode.style.left = -10.5 + 'rem';
+        popoverNode.style.top = `${-(popoverBoxHalfH - floatingBallHalfW)}px`;
+        popoverNode.style.left = `${-popoverBoxW}px`;
         popoverNode.style.transformOrigin = '100% 50%';
       } else {
-        popoverNode.style.top = -(3.25 + 2.5 * tempPopoverEventNum) + 'rem';
-        popoverNode.style.left = 3.5 + 'rem';
+        popoverNode.style.top = `${-(popoverBoxHalfH - floatingBallHalfW)}px`;
+        popoverNode.style.left = `${floatingBallW}px`;
         popoverNode.style.transformOrigin = '0 50%';
       }
-    }
-
-    function computedPopoverNum() {
-      const popoverChildrenNum = popoverNode.children.length || 1;
-      return Math.ceil(popoverChildrenNum / 2);
     }
   }
   // 初始化位置
@@ -485,6 +521,44 @@ function color2Rgba(presentColor?: tinycolor.ColorInput): tinycolor.Instance {
 
 function removePX(value: string) {
   return Number(value.replace(/px/, ''));
+}
+
+const StyleID = 'floatingball-POPOVER-style';
+function styleInject(css: string) {
+  if (!css || typeof document === 'undefined') {
+    return;
+  }
+
+  let head = document.head || document.getElementsByTagName('head')[0];
+  let style: any = document.createElement('style');
+  style.type = 'text/css';
+  style.id = StyleID;
+
+  head.appendChild(style);
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  return style;
+}
+
+function getStyleElByID(id: string = StyleID) {
+  return document.getElementById(id);
+}
+
+function removeStyleElByID(id: string = StyleID) {
+  const styleEl = getStyleElByID(id);
+  if (styleEl) {
+    styleEl.remove();
+  }
+}
+
+function injectCssByColumn(column: number, children: number) {
+  const css = `${calculateNthChildByColumn(
+    column
+  )}${calculateNthLastChildByColumn(children % column)}`;
+  return styleInject(css);
 }
 
 export default FloatBall;

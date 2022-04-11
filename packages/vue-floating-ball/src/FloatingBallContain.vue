@@ -15,6 +15,10 @@ export default defineComponent({
       type: String,
       default: 'top right',
     },
+    column: {
+      type: Number,
+      default: 2,
+    },
     events: {
       type: Array,
       default: () => [],
@@ -34,6 +38,7 @@ export default defineComponent({
       fbCore
         .setTheme(props.theme)
         .setPosition(props.position)
+        .setColumn(column)
         .collectAllEls({
           floatingBallParentEl: fbContainRef.value,
           floatingBallBoxEl: fbRef.value?.$el,
@@ -51,6 +56,12 @@ export default defineComponent({
       () => props.position,
       () => {
         fbCore.setPosition(props.position).render();
+      }
+    );
+    watch(
+      () => props.column,
+      () => {
+        fbCore.setColumn(props.column).render();
       }
     );
     return {
@@ -79,8 +90,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .floating-ball-contain {
   position: fixed;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 56px;
+  height: 56px;
   z-index: 30000;
 }
 </style>

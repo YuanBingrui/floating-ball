@@ -12,5 +12,6 @@ export interface FloatingBallPopoverProps {
 export interface FloatingBallContainProps {
   theme?: string;
   position?: string;
+  column?: number;
   events?: Item[];
 }

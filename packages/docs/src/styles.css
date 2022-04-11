@@ -23,6 +23,11 @@
   font-weight: bold;
   margin-bottom: 32px;
 }
+.title-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .positon-wrapper {
   display: flex;
   height: 200px;

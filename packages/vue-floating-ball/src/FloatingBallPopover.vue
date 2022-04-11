@@ -44,8 +44,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .floating-ball-popover {
   position: absolute;
-  padding: 0.2rem;
-  border-radius: 2rem;
+  padding: 12px;
+  border-radius: 32px;
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
@@ -54,11 +54,12 @@ export default defineComponent({
     color: #fff;
     cursor: pointer;
     box-sizing: border-box;
-    margin: 0.2rem 0.6rem;
+    margin-right: 32px;
+    margin-bottom: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 3.8rem;
+    width: 60px;
     @mixin popover-common {
       box-sizing: border-box;
       width: 100%;
@@ -68,8 +69,8 @@ export default defineComponent({
     }
     &-icon {
       @include popover-common;
-      height: 3.8rem;
-      font-size: 2.3rem;
+      height: 60px;
+      font-size: 36px;
       border-radius: 50%;
       overflow: hidden;
       img,
@@ -81,8 +82,8 @@ export default defineComponent({
     }
     &-word {
       @include popover-common;
-      height: 1rem;
-      font-size: 1rem;
+      height: 16px;
+      font-size: 16px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

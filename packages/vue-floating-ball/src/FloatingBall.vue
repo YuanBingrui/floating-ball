@@ -9,8 +9,8 @@
 <style lang="scss" scoped>
 .floating-ball-box {
   position: absolute;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 56px;
+  height: 56px;
   $zoom-scale: scale(1.2, 1.2);
   @mixin ball-position {
     position: absolute;
